@@ -646,6 +646,13 @@ const obs = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add("visible"); });
 }, { threshold: 0.07 });
 document.querySelectorAll(".fade-up").forEach(el => obs.observe(el));
+ function goSurvey() {
+  window.location.href = "Welora_설문.html";
+}
+
+function goNotify() {
+  window.location.href = "Welora_설문.html#notify";
+}
 </script>
 </body>
 </html>
