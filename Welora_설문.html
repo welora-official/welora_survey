@@ -736,15 +736,13 @@ body{font-family:"Noto Sans KR",sans-serif;background:var(--soft);color:#111827;
 // ── Google Sheets 전송 ──
 const SHEETS_URL_A = 'https://script.google.com/macros/s/AKfycbwmLhh13FeqFJGmSblMs7C4Nt8nQCqHlaWJ8Z0QulNYpTbA7uHDjf1tc5Y-s8mmL87O/exec'; // 여기에 Apps Script 배포 URL 붙여넣기
 
-function sendToSheets(data, type) {
-  if (SHEETS_URL_A === '__FORM_A_SCRIPT_URL__') return; // URL 미설정 시 스킵
-  fetch(SHEETS_URL_A, {
-    method: 'POST',
-    mode: 'no-cors',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ ...data, type })
-  }).catch(() => {}); // 실패해도 설문 제출에 영향 없음
-}
+sendToSheets(r, 'survey');
+
+setTimeout(() => {
+  document.getElementById('surveyPage').style.display='none';
+  document.getElementById('successWrap').style.display='block';
+  window.scrollTo(0,0);
+}, 1000);
 
 const SKEY='welora_formA_v1';
 const NKEY='welora_notify_v1';
